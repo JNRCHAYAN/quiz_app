@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:quiz_app/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/question_screen.dart';
-
+import 'package:quiz_app/data/questions.dart';
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
 
@@ -25,13 +25,24 @@ class _QuizState extends State<Quiz> {
 
   //***** Another Screen shift code with Terneary Operator
   var activeScreen = 'Start_Screen';
-
+   List<String> selectedAnswer = [];
   void switchScreen() {
     setState(() {
       activeScreen = 'Question_Screen';
     });
   }
+  void chooseAnswer(String answer)
+  {
+    selectedAnswer.add(answer);
+    if(selectedAnswer.length == questions.length )
+      {
+        setState(() {
+          selectedAnswer= [];
+          activeScreen = 'Start_Screen';
 
+        });
+      }
+  }
   @override
   Widget build(BuildContext context) {
     // final screenWidget = activeScreen == 'Start_Screen'
@@ -42,7 +53,7 @@ class _QuizState extends State<Quiz> {
     Widget screenWidget = Start_Screen(switchScreen);
     if(activeScreen == 'Question_Screen')
       {
-        screenWidget = const QuestionScreen();
+        screenWidget =  QuestionScreen(onSelectAnswer: chooseAnswer,);
       }
 
     return MaterialApp(

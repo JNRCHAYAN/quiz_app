@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/quiz.dart';
+import 'package:google_fonts/google_fonts.dart';
 class Start_Screen extends StatelessWidget {
   const Start_Screen( this.startQuiz,{super.key});
-
   final void Function() startQuiz;
   @override
   Widget build(BuildContext context) {
@@ -23,9 +22,9 @@ class Start_Screen extends StatelessWidget {
           const SizedBox(
             height: 25,
           ),
-          const Text(
+          Text(
             "Best Quiz App in the world",
-            style: TextStyle(
+            style: GoogleFonts.poppins(
                 fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
           ),
 
