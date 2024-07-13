@@ -58,7 +58,7 @@ class _QuizState extends State<Quiz> {
       }
     if(activeScreen == 'result_scrren')
       {
-        screenWidget = const result_scrren();
+        screenWidget =  result_scrren(chosenAnswer: selectedAnswer,);
       }
 
 
